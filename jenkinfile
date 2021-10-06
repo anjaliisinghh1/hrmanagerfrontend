@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Requirement') {
+            steps {
+                echo 'Requirement gathering'
+            }
+        }
+        
+        stage('Planning') {
+            steps {
+                echo 'Planning'
+            }
+        }
+        
+        stage('Designing') {
+            steps {
+                echo 'Designing'
+            }
+        }
+        
+        stage('Developing') {
+            steps {
+                echo 'Developing'
+            }
+        }
+      
+        stage('Testing') {
+            steps {
+                echo 'Testing'
+            }
+        }
+  }
+  }
