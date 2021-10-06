@@ -1,7 +1,24 @@
 pipeline {
     agent any
-
     stages {
+        stage('Clone sources') {
+            steps {
+                git url: 'https://github.com/anjaliisinghh1/employeeBackend.git'
+            }
+        }
+        stage('SonarQube analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat'mvn clean org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.0.2155:sonar'
+                }
+            }
+        }
+        stage("Quality gate") {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+        
         stage('Requirement') {
             steps {
                 echo 'Requirement gathering'
